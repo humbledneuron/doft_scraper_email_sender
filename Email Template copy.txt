@@ -1,0 +1,47 @@
+✉️/📞/🟩 - Price #it's asking for premium - truck (')+ - pick up (date.)+ - pick up (loc.)+ - drop off (loc.)+ - miles+ - weight + - Ref# +
+
+
+Age posted: *time* (C.S.T.) +
+
+
+Truck type: +
+Length: +
+
+
+Origin (zip (if/app.): +
+Pick up date/ time: +
+Pick Up Hours: #
+Dock Hours: #
+
+
+Destination (zip (if/app.): +
+Drop off date/ time: +
+
+
+Price: #it's asking for premium
+Total trip mileage: #
+Est. Fuel Costs: +
+
+
+Full/ partial: #
+Weight: +
+
+
+Commodity #
+DIMS: #
+
+Comments: #
+
+Company: +
+address:
+DOT: +
+Docket: +
+Contact: +
+Phone: +
+Fax: #
+Email: +
+*or reply back to this emaiL*
+Website: +
+
+#distance -- extracted thinking this might be important
+#size  -- extracted thinking this might be important

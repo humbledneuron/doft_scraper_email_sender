@@ -1,0 +1,14 @@
+*.html
+.csv
+__pycache__
+*.pyc
+.env
+.venv
+build
+dist
+*.zip
+*.log
+*.pdf
+*.xls
+*.xlsx
+*.toml
