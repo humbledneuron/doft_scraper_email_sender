@@ -58,18 +58,6 @@ class EmailSender:
 
         email_content = []
 
-        # email_present = data.get('email', 'n/a') != 'n/a' and data.get('email') is not None
-        # phone_present = data.get('phone', 'n/a') != 'n/a' and data.get('phone') is not None
-
-        # emojis = ""
-        # if email_present and phone_present:
-        #     emojis = "🟩"
-        # elif email_present:
-        #     emojis = "✉️"
-        # elif phone_present:
-        #     emojis = "📞"
-
-        # first_line = f"{emojis} - {bold(data.get('price', 'n/a'))} - {bold(data.get('truck_type', 'n/a'))} - {bold(data.get('pickup_date', 'n/a'))} - {bold(data.get('pickup_address', 'n/a'))} - {bold(data.get('drop_address', 'n/a'))} - {bold(data.get('distance', 'n/a'))} - {bold(data.get('weight', 'n/a'))} - {bold(data.get('ref', 'n/a'))}"
         line_1 = f"Age posted: {bold(data.get('age', 'n/a'))} (C.S.T.)"
 
         line_2 = f"Truck type: {bold(data.get('truck_type', 'n/a'))}"
@@ -106,23 +94,23 @@ class EmailSender:
 
         
         email_content.append(f"""
-        <br><br><div style="text-align: left;">{line_1}</div><br><br>
+        <br><div style="text-align: left;">{line_1}</div><br>
         <div style="text-align: left;">{line_2}</div>
-        <div style="text-align: left;">{line_3}</div><br><br>
+        <div style="text-align: left;">{line_3}</div><br>
         <div style="text-align: left;">{line_4}</div>
         <div style="text-align: left;">{line_5}</div>
         <div style="text-align: left;">{line_6}</div>
-        <div style="text-align: left;">{line_7}</div><br><br>
+        <div style="text-align: left;">{line_7}</div><br>
         <div style="text-align: left;">{line_8}</div>
-        <div style="text-align: left;">{line_9}</div><br><br>
+        <div style="text-align: left;">{line_9}</div><br>
         <div style="text-align: left;">{line_10}</div>
         <div style="text-align: left;">{line_11}</div>
-        <div style="text-align: left;">{line_12}</div><br><br>
+        <div style="text-align: left;">{line_12}</div>><br>
         <div style="text-align: left;">{line_13}</div>
-        <div style="text-align: left;">{line_14}</div><br><br>
+        <div style="text-align: left;">{line_14}</div><br>
         <div style="text-align: left;">{line_15}</div>
-        <div style="text-align: left;">{line_16}</div><br><br>
-        <div style="text-align: left;">{line_17}</div><br><br>
+        <div style="text-align: left;">{line_16}</div><br>
+        <div style="text-align: left;">{line_17}</div><br>
         <div style="text-align: left;">{line_18}</div>
         <div style="text-align: left;">{line_19}</div>
         <div style="text-align: left;">{line_20}</div>
@@ -207,9 +195,6 @@ class EmailSender:
                 print(f"Invalid data format in JSON: {ve}")
                 continue
 
-            # def bold(text):
-            #     return f"<strong>{text}</strong>"
-
             email_present = data.get('email', 'n/a') != 'n/a' and data.get('email') is not None
             phone_present = data.get('phone', 'n/a') != 'n/a' and data.get('phone') is not None
 
@@ -230,6 +215,11 @@ class EmailSender:
             
             # client 3rd pattern 
             # 🟩 - Bid: n/a - Type: Reefer - P.U. : 07/10/2024 - York, PA 17403 - D.O.: Butner, NC 27509 - Miles: 338 - Ib: 44,000 - Ref# : W3Uua5MRgsekW7VX
+
+            # client 4th pattern
+            # 🟩 - Bid: n/a - Type: Flatbed - P.U. : 07/09/2024 - Memphis, TN 38103 - D.O.: Troy, MO 63379 - Miles: 325 - Ib: 48,000 - Ref# : yPrJffp7Ya9F98Bo
+            
+
 
             email_subject = f"{emojis} - Bid: {(data.get('price', 'n/a'))} - Type: {(data.get('truck_type', 'n/a'))} - P.U. : {(data.get('pickup_date', 'n/a'))} - {(data.get('pickup_address', 'n/a'))} - D.O.: {(data.get('drop_address', 'n/a'))} - Miles: {(data.get('distance', 'n/a'))} - Ib: {(data.get('weight', 'n/a'))} - Ref# : {(data.get('ref', 'n/a'))}"
             

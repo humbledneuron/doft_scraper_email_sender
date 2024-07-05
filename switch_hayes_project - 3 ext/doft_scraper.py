@@ -5,12 +5,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+from datetime import datetime
 import json
 import os
 import random
 import string
-
-
 
 
 class DoftScraper:
@@ -63,9 +62,10 @@ class DoftScraper:
         data = {}
 
         try:
-            data['age'] = row[1].find_element(By.XPATH, '//div[contains(@class, "time-ago")]').get_attribute('datetime')
+            data['age'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            # data['age'] = row[1].find_element(By.XPATH, '//div[contains(@class, "time-ago")]').get_attribute('datetime')
         except:
-            data['age'] = 'n/a'
+            data['age'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         time.sleep(3)
 
@@ -106,12 +106,12 @@ class DoftScraper:
             data['truck_type'] = 'n/a'
 
         try:
-            data['distance'] = row[2].find_element(By.XPATH, "//div[contains(@class, 'linfo-row')]//div[@class='linfo']//div[@class='hdr'][contains(text(),'Distance')]/following-sibling::div[@class='val']").text
+            data['distance'] = row[2].find_element(By.XPATH, "//div[contains(@class, 'linfo-row')]//div[@class='linfo']//div[@class='hdr'][contains(text(),'Distance')]/following-sibling::div[@class='val']").text.replace(" mi", "")
         except:
             data['distance'] = 'n/a'
 
         try:
-            data['weight'] = row[2].find_element(By.XPATH, "//div[contains(@class, 'linfo-row')]//div[@class='linfo']//div[@class='hdr'][contains(text(),'Weight')]/following-sibling::div[@class='val']").text
+            data['weight'] = row[2].find_element(By.XPATH, "//div[contains(@class, 'linfo-row')]//div[@class='linfo']//div[@class='hdr'][contains(text(),'Weight')]/following-sibling::div[@class='val']").text.replace(" lbs", "")
         except:
             data['weight'] = 'n/a'
 
@@ -148,7 +148,7 @@ class DoftScraper:
         try:
             data['email'] = row[3].find_element(By.XPATH, ' //div[@class="hdr"][contains(text(),"Email")]/following-sibling::div[@class="val"]').text
         except:
-            data['email'] = 'Reply back to this email'
+            data['email'] = 'n/a'
 
         try:
             data['company'] = linfo_rows31[0].find_element(By.XPATH, '//div[contains(@class, "linfo")]//div[@class="val l-shipper"]').text
@@ -193,10 +193,7 @@ if __name__ == "__main__":
     scraper.setup_driver()
     scraper.read_credentials()
     scraper.login()
-    start = time.time()
     data = scraper.extract_data()
     with open('scraped_data.json', 'w') as file:
         file.write(json.dumps(data))
-    end = time.time()
-    print(f"Time taken: {end - start}")
     scraper.quit_driver()
