@@ -4,10 +4,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
+import time, os
 
 # Set up the Chrome driver
-service = Service(r"D:\\BHaSH\\GHub\\fl\\switch_hayes\\chromedriver.exe")
+service = Service(f"{os.getcwd()}\\chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 
 # Read credentials from file
@@ -50,27 +50,27 @@ def extract_data(driver):
 
 
     #row 2 but index 1
-    try:
-        age = row[1].find_element(By.XPATH, '//div[contains(@class, "time-ago")]').get_attribute('datetime')
-        print("Age:", age)
-        if age:
-            return age
-        else:
-            return 'n/a'
-    except:
-        print("Age: None")
+    # try:
+    #     age = row[1].find_element(By.XPATH, '//div[contains(@class, "time-ago")]').get_attribute('datetime')
+    #     print("Age:", age)
+    #     if age:
+    #         return age
+    #     else:
+    #         return 'n/a'
+    # except:
+    #     print("Age: None")
 
     time.sleep(0.2)
 
-    try:
-        ref = row[1].find_element(By.XPATH, '//div[contains(@class, "tracking")]').text
-        print("Ref:", ref)
-        if ref:
-            return ref
-        else:
-            return 'n/a'        
-    except:
-        print("Ref: None")
+    # try:
+    #     ref = row[1].find_element(By.XPATH, '//div[contains(@class, "tracking")]').text
+    #     print("Ref:", ref)
+    #     if ref:
+    #         return ref
+    #     else:
+    #         return 'n/a'        
+    # except:
+    #     print("Ref: None")
 
     #row 3 but index 2
     # linfo 1 
@@ -87,17 +87,17 @@ def extract_data(driver):
     except:
         print("Pickup Date:None")
 
-    try:
-        pickup_address = linfo_rows1[1].find_element(By.XPATH, '//div[contains(@class, "linfo")]//div[contains(@class, "val")]//div[contains(@class, "lp-addr-block")]//div[contains(@class, "lp-addr")]').text
-        origin = pickup_address
-        print("Pickup Address:", pickup_address)
-        print("Origin:", origin)
-        if pickup_address:
-            return pickup_address
-        else:
-            return 'n/a'
-    except:
-        print("Pickup Address: None")
+    # try:
+    #     pickup_address = linfo_rows1[1].find_element(By.XPATH, '//div[contains(@class, "linfo")]//div[contains(@class, "val")]//div[contains(@class, "lp-addr-block")]//div[contains(@class, "lp-addr")]').text
+    #     origin = pickup_address
+    #     print("Pickup Address:", pickup_address)
+    #     print("Origin:", origin)
+    #     if pickup_address:
+    #         return pickup_address
+    #     else:
+    #         return 'n/a'
+    # except:
+    #     print("Pickup Address: None")
 
 
     #linfo 3
@@ -281,10 +281,10 @@ if __name__ == "__main__":
 
     start = time.time()
     i = 0
-    while i < 3:
+    while i < 1:
         # start_while = time.time()
         extract_data(driver)
-        driver.refresh()
+        # driver.refresh()
         # end_while = time.time()
         # print(f"While Time taken: {end_while - start_while}")
         i += 1
