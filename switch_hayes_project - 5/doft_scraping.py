@@ -68,9 +68,10 @@ class DoftScraper:
 
         try:
             # Age posted: 09:54:35 (C.S.T.) 07-05-2024"
-            data['age'] = datetime.now().strftime("%H:%M:%S (C.S.T.) %m-%d-%Y")
+            # data['age'] = datetime.now().strftime("%H:%M:%S (C.S.T.) %m-%d-%Y")
+            data['age'] = datetime.now().strftime("%I:%M %p (C.S.T.) %m-%d-%Y")
         except:
-            data['age'] = datetime.now().strftime("%H:%M:%S (C.S.T.) %m-%d-%Y")
+            data['age'] = datetime.now().strftime("%I:%M %p (C.S.T.) %m-%d-%Y")
 
         time.sleep(3)
 
