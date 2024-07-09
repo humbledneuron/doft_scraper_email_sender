@@ -59,7 +59,7 @@ class EmailSender:
 
         email_content = []
 
-        line_1 = f"Age posted: {bold(data.get('age', 'n/a'))} (C.S.T.)"
+        line_1 = f"Age posted: {bold(data.get('age', 'n/a'))} "
 
         line_2 = f"Truck type: {bold(data.get('truck_type', 'n/a'))}"
         line_3  = f"Length: {bold(data.get('length', 'n/a'))}"

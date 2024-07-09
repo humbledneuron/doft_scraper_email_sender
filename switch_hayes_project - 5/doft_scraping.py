@@ -127,6 +127,18 @@ class DoftScraper:
             data['weight'] = 'n/a'
 
         try:
+            data['commodity'] = row[2].find_element(By.XPATH, "//div[contains(@class, 'linfo-row')]//div[@class='linfo']//div[@class='hdr'][contains(text(),'Commodity')]/following-sibling::div[@class='val']").text
+        except:
+            data['commodity'] = 'n/a'
+
+        try:
+            data['comments'] = row[2].find_element(By.XPATH, "//div[contains(@class, 'linfo-row comment')]//div[@class='linfo']").text
+            comments = data['comments'].split('\n')
+
+        except:
+            data['comments'] = 'n/a'
+
+        try:
             data['size'] = row[2].find_element(By.XPATH, "//div[contains(@class, 'linfo-row')]//div[@class='linfo']//div[@class='hdr'][contains(text(),'Size')]/following-sibling::div[@class='val']").text
         except:
             data['size'] = 'n/a'
@@ -177,12 +189,12 @@ class DoftScraper:
             data['website'] = 'n/a'
 
         try:
-            data['dot'] = row[3].find_element(By.XPATH, '//div[@class="hdr"][contains(text(),"Dot")]/following-sibling::div[@class="val"]').text
+            data['dot'] = row[3].find_element(By.XPATH, '//div[@class="hdr"][contains(text(),"DOT")]/following-sibling::div[@class="val"]').text
         except:
             data['dot'] = 'n/a'
 
         try:
-            data['docket'] = row[3].find_element(By.XPATH, '//div[@class="hdr"][contains(text(),"Docket")]/following-sibling::div[@class="val"]').text
+            data['docket'] = row[3].find_element(By.XPATH, '//div[@class="hdr"][contains(text(),"DOCKET")]/following-sibling::div[@class="val"]').text
         except:
             data['docket'] = 'n/a'
 

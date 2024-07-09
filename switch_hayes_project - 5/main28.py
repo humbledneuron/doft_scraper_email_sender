@@ -204,12 +204,13 @@ class EmailSender:
             elif phone_present:
                 emojis = "📞"
         
-            # Subject: 🟩 - Bid: n/a - Type: Reefer - P.U. : Center, CO (07/05/2024) - D.O.: Boston, MA - Miles: 2195 - Ib: 44,000 - Ref# : d6tZuh2Wzp77HMqL
+                        # Subject: 🟩 - Bid: n/a - Type: Reefer - P.U. : Center, CO (07/05/2024) - D.O.: Boston, MA - Miles: 2195 - Ib: 44,000 - Ref# : d6tZuh2Wzp77HMqL
             email_subject = f"{emojis} - Bid: {(data.get('price', 'n/a'))} - Type: {(data.get('truck_type', 'n/a'))} - P.U. : {(data.get('pickup_address', 'n/a'))} ( {(data.get('pickup_date', 'n/a'))} ) - D.O.: {(data.get('drop_address', 'n/a'))} - Miles: {(data.get('distance', 'n/a'))} - Ib: {(data.get('weight', 'n/a'))} - Ref# : {(data.get('ref', 'n/a'))}"
             
             email_content = self.format_email_template(data)  # format data into email content
 
             reply_to_email = data.get('email', 'n/a')
+            
 
             with concurrent.futures.ThreadPoolExecutor(max_workers=self.batch_size) as executor:
                 futures = [executor.submit(self.send_email_batch, sender_detail, smtp_server, smtp_port, recipient_email, bcc_list, reply_to_email, email_subject, email_content) for sender_detail in sender_details]
